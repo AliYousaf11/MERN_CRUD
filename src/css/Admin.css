@@ -1,0 +1,35 @@
+
+.card {
+    /* margin: 10px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 1rem 0; */
+    color: white;
+  }
+  
+  .card p:nth-child(2) {
+    font-size: 2rem;
+    color: white;
+  }
+  button {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    /* padding: 1rem; */
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    /* width: 180px; */
+  }
+  
+  button span {
+    color: lightcoral;
+    /* padding-right: 0.4rem; */
+    border-right: 2px solid black;
+  }
+  

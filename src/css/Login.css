@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+.main {
+  /* width: 100%; */
+}
+.login {
+  /* margin-top: 4rem; */
+  text-align: center;
+  min-width: 800px;
+  position: absolute;
+  width: 800px;
+  top: 15%;
+  left: 48%;
+  padding: 50px;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+.login h1 {
+  margin-bottom: 30px;
+  color: white;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.login .inputBox {
+  position: relative;
+}
+
+.login .inputBox input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+}
+
+.login .inputBox label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  font-size: 16px;
+  color: white;
+  transition: 0.5s;
+  outline: none;
+}
+.login .inputBox input:focus ~ label,
+.login .inputBox input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: black;
+  font-size: 12px;
+}
+.login input[type="submit"] {
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  background: none;
+  border: 1px solid white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 4px;
+}
+.login button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid white;
+  margin-left: 5px;
+  margin-top: 0.7rem;
+  padding: 0.45rem 1.3rem;
+  color: white;
+}
+.table {
+  position: absolute;
+  width: 50vw;
+  top: 5%;
+  left: 25%;
+  padding: 0px;
+  background-color: lightblue;
+  overflow-x: auto;
+  /* border-radius: 10px; */
+}
+
+table {
+  color: white;
+  width: 100%;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+table > tbody > tr > td {
+  width: 100%;
+  padding: 25px;
+  font-size: 16px;
+  color: white;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+}
+.table > h1 {
+  background-color: lightblue;
+  text-align: center;
+  color: white;
+  border-radius: 7px;
+  padding-bottom: 40px;
+  padding-top: 5%;
+}
+.table td,
+.table th {
+  padding: 27px 30px;
+  border: 1x solid black;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+}
+
+.table th {
+  background-color: aquamarine;
+  color: white;
+}
+
+.signupLink {
+  list-style-type: none;
+  text-decoration: none;
+  color: white;
+  /* padding: 1rem; */
+  border: 1px solid white;
+}

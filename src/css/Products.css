@@ -1,0 +1,10 @@
+.ProductMain{
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+}
+.card{
+  margin-top: 2rem;
+  max-height: 400px;
+  min-height: 200px;
+}
