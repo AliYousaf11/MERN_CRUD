@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../css/Login.css";
 import { InputField } from "../component/InputField";
-
 export const Login = () => {
   const [userLogin, setUserLogin] = useState({
     email: "",
@@ -17,8 +16,7 @@ export const Login = () => {
   const SubmitUserLogin = (e) => {
     e.preventDefault();
     const { email, password } = userLogin;
-
-    fetch("http://localhost:1234/user/login", {
+    fetch("http://localhost:5000/user/login", {
       headers: {
         "content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -31,7 +29,7 @@ export const Login = () => {
     })
       .then((response) => response.json())
       .then((res) => {
-        alert(res.message);
+        alert(`Token rececived from backend ${res.message}`);
       })
       .catch((error) => console.log(error));
   };

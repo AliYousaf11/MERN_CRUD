@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useState } from "react";
 import "../css/Login.css";
 import { InputField } from "../component/InputField";
 
@@ -17,7 +17,7 @@ export const AddProduct = () => {
     e.preventDefault();
     const { name, price, quantity } = createproduct;
 
-    fetch("http://localhost:1234/product/addproduct", {
+    fetch("http://localhost:5000/product/addproduct", {
       headers: {
         "content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -31,9 +31,11 @@ export const AddProduct = () => {
     })
       .then((response) => response.json())
       .then((res) => {
-        alert(res.mesage);
+        alert(res.message);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="main">

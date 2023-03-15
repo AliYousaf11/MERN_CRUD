@@ -1,7 +1,8 @@
 import React from "react";
 import "../css/Admin.css";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
-export const AdminCard = ({ name, id, price, quantity }) => {
+export const AdminCard = ({ name, id, price, quantity, parentAlert }) => {
   const HandleRemove = (id) => {
     fetch(`http://localhost:1234/product/getproduct/${id}`, {
       headers: {
@@ -18,25 +19,33 @@ export const AdminCard = ({ name, id, price, quantity }) => {
   };
 
   return (
-    <div>
-      <div className="main">
-        <div className="card">
-          <img src="" alt="" />
-          <div>
-            <p>{name}</p>
-            <p>
-              {quantity}
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
-              rerum ducimus tempora laboriosam.
-            </p>
-          </div>
-          <button>
-            <span>{price}$</span>
-          </button>
-          {/* onClick={() => parentAlert(id, name, price, quantity)} */}
-          <button>Edit</button>
-          <button onClick={() => HandleRemove(id)}>Remove</button>
-        </div>
+    <div className="AdminCard">
+      <div>
+        <img
+          src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
+          alt=""
+        />
+      </div>
+      <div>
+        <p>
+          {name} <span>${price}</span>
+        </p>
+        <p>
+          Quantity:{quantity} Lorem ipsum dolor, sit amet consectetur
+          adipisicing elit. Magnam rerum ducimus tempora.
+        </p>
+        <button onClick={() => HandleRemove(id)}>
+          <span>
+            <FaTrash />
+          </span>
+          Remove
+        </button>
+        <button onClick={() => parentAlert(id,name,price,quantity)}>
+          <span>
+            <FaEdit />
+          </span>
+          Update
+        </button>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../css/Login.css";
+import "../css/signup.css";
 import { InputField } from "../component/InputField";
 
 export const Signup = () => {
@@ -20,7 +20,7 @@ export const Signup = () => {
     e.preventDefault();
     const { name, email, password, confirmPassword, phoneNumber } = userSignup;
 
-    fetch("http://localhost:1234/user/signup", {
+    fetch("http://localhost:5000/user/signup", {
       headers: {
         "content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -42,43 +42,41 @@ export const Signup = () => {
   };
 
   return (
-    <div className="main">
-      <div className="login">
-        <h1>Sign-Up</h1>
-        <form action="POST" onSubmit={SubmitUserSignUp}>
-          <InputField
-            user={userSignup.name}
-            handleInput={HandleSignUpInput}
-            name="name"
-            type="text"
-          />
-          <InputField
-            user={userSignup.email}
-            handleInput={HandleSignUpInput}
-            name="email"
-            type="text"
-          />
-          <InputField
-            user={userSignup.password}
-            handleInput={HandleSignUpInput}
-            name="password"
-            type="number"
-          />
-          <InputField
-            user={userSignup.confirmPassword}
-            handleInput={HandleSignUpInput}
-            name="confirmPassword"
-            type="number"
-          />
-          <InputField
-            user={userSignup.phoneNumber}
-            handleInput={HandleSignUpInput}
-            name="phoneNumber"
-            type="number"
-          />
-          <input type="submit" name="signup" value="Sign-Up" />
-        </form>
-      </div>
+    <div className="signup">
+      <h1>Sign-Up</h1>
+      <form action="POST" onSubmit={SubmitUserSignUp}>
+        <InputField
+          user={userSignup.name}
+          handleInput={HandleSignUpInput}
+          name="name"
+          type="text"
+        />
+        <InputField
+          user={userSignup.email}
+          handleInput={HandleSignUpInput}
+          name="email"
+          type="text"
+        />
+        <InputField
+          user={userSignup.password}
+          handleInput={HandleSignUpInput}
+          name="password"
+          type="number"
+        />
+        <InputField
+          user={userSignup.confirmPassword}
+          handleInput={HandleSignUpInput}
+          name="confirmPassword"
+          type="number"
+        />
+        <InputField
+          user={userSignup.phoneNumber}
+          handleInput={HandleSignUpInput}
+          name="phoneNumber"
+          type="number"
+        />
+        <input type="submit" name="signup" value="Sign-Up" />
+      </form>
     </div>
   );
 };

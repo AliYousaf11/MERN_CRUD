@@ -5,86 +5,123 @@ import { AdminCard } from "../component/AdminCard";
 export const Admin = () => {
   const [adminproduct, setAdminProduct] = useState([]);
 
-  const [pname, setName] = useState("");
-  const [pprice, setPrice] = useState("");
-  const [qquantity, setQuantity] = useState("");
+  const [pagenumber, setPageNumber] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const [updateid, setUpdateId] = useState("");
+  const [updatename, setUpdateName] = useState("");
+  const [updatequantity, setUpdateQuantity] = useState("");
+  const [updateprice, setUpdatePrice] = useState("");
+
+  const paginationbtn = new Array(totalPages)
+    .fill(null)
+    .map((ele, index) => index);
 
   useEffect(() => {
-    fetch("http://localhost:1234/product/getproduct", {
+    fetch(`http://localhost:5000/product/getproductadmin?page=${pagenumber}`, {
+      method: "GET",
       headers: {
+        Accept: "application/json",
         "content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      method: "GET",
     })
       .then((response) => response.json())
       .then((res) => {
         setAdminProduct(res.data);
+        setTotalPages(res.TotalPages);
       })
-      .catch((error) => console.log(error));
-  },[]);
+      .catch((error) => {
+        alert(error);
+      });
+  }, [pagenumber]);
 
   // callback
-  // const parentAlert=(data)=>{
-  //   alert("Data received from child", data.id);
-  //   setName(data.name);
-  //   setPrice(data.price);
-  //   setQuantity(data.quantity);
+  const parentAlert = (id, name, price, quantity) => {
+    alert("Admin Card: ", id, name, price, quantity);
+    console.log(id, name, quantity, price);
+    setUpdateId(id);
+    setUpdateName(name);
+    setUpdatePrice(price);
+    setUpdateQuantity(quantity);
+  };
 
-  //   fetch(`http://localhost:1234/product/updateproduct/${data.id}`, {
-  //     headers: {
-  //       "content-type": "application/json",
-  //       "Access-Control-Allow-Origin": "*",
-  //     },
-  //     method: "PUT",
-  //     body: JSON.stringify({
-  //       name: data.name,
-  //       price: data.price,
-  //       quantity: data.quantity,
-  //     }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((res) => {
-  //       parentAlert(res.data);
-  //       console.log(res.data);
-  //       alert(res.message);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }
+  const SubmitUpdateUser = (e) => {
+    e.preventDefault();
 
+    fetch(`http://localhost:5000/product/updateproduct/${updateid}`, {
+      headers: {
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      method: "PUT",
+      body: JSON.stringify({
+        id: updateid,
+        name: updatename,
+        price: updateprice,
+        quantity: updatequantity,
+      }),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        alert(res.message);
+      })
+      .catch((error) => console.log(error));
+  };
   return (
-    <div className="Admin">
-      <div> 
-        <form action="">
-          <input
-            type="text"
-            value={pname}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="text"
-            value={pprice}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-          <input
-            type="text"
-            value={qquantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-          <button>Update Product</button>
-        </form>
+    <div className="AdminForm">
+      <form method="PUT" onSubmit={SubmitUpdateUser}>
+        <input
+          type="text"
+          value={updatename}
+          onChange={(e) => setUpdateName(e.target.value)}
+        />
+        <input
+          type="text"
+          value={updateprice}
+          onChange={(e) => setUpdatePrice(e.target.value)}
+        />
+        <input
+          type="text"
+          value={updatequantity}
+          onChange={(e) => setUpdateQuantity(e.target.value)}
+        />
+        <input
+          type="text"
+          value={updateid}
+          onChange={(e) => setUpdateId(e.target.name)}
+        />
+        <input type="submit" value="Update User" />
+      </form>
+
+      <div className="AdminPage">
+        <div className="Admin">
+          {adminproduct.map((product) => {
+            return (
+              <AdminCard
+                key={product._id}
+                price={product.price}
+                name={product.name}
+                quantity={product.quantity}
+                id={product._id}
+                parentAlert={parentAlert}
+              />
+            );
+          })}
+        </div>
       </div>
-      <div>
-        {adminproduct.map((product) => {
+
+      <div className="pgnbtn">
+        {paginationbtn.map((paginationIndex) => {
           return (
-            <AdminCard
-              key={product._id}
-              price={product.price}
-              name={product.name}
-              quantity={product.quantity}
-              id={product._id}
-              // parentAlert={parentAlert}
-            />
+            <div key={paginationIndex}>
+              <button
+                onClick={() => setPageNumber(paginationIndex)}
+                className="btn"
+              >
+                {paginationIndex + 1}
+              </button>
+            </div>
           );
         })}
       </div>

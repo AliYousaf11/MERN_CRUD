@@ -48,17 +48,17 @@ export const Navbar = () => {
   const [routeDate] = useState(Route);
   return (
     <div className="Navbar">
+      <h2>
+        <FaEdge />
+      </h2>
       <nav>
-        <p>
-          <FaEdge />
-        </p>
         <ul>
           {routeDate.map(({ name, logo, path }, index) => {
             return (
               <span key={index}>
                 <li>
-                  <span>{logo}</span>
                   <Link to={path} className="link">
+                    <span>{logo}</span>
                     {name}
                   </Link>
                 </li>

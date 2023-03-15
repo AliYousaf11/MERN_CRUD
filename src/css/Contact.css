@@ -5,7 +5,7 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
-.login {
+.userContact {
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   max-width: 600px;
@@ -15,13 +15,14 @@
   border-radius: 5px;
   padding: 2rem;
 }
-.login h1 {
+.userContact h1 {
   color: #0a66c2;
 }
-.login .inputBox {
+.userContact .inputBox {
   position: relative;
 }
-.login .inputBox input {
+
+.userContact .inputBox input {
   width: 100%;
   padding: 10px;
   font-size: 1.2rem;
@@ -32,7 +33,7 @@
   border-bottom: 1px solid #0a66c2;
   background: transparent;
 }
-.login .inputBox label {
+.userContact .inputBox label {
   position: absolute;
   top: 0;
   left: 0;
@@ -43,14 +44,14 @@
   transition: 0.5s;
   outline: none;
 }
-.login .inputBox input:focus ~ label,
-.login .inputBox input:valid ~ label {
+.userContact .inputBox input:focus ~ label,
+.userContact .inputBox input:valid ~ label {
   top: -20px;
   left: 0;
   color: #0a66c2;
   font-size: 10px;
 }
-.login input[type="submit"] {
+.userContact input[type="submit"] {
   background: transparent;
   border: none;
   outline: none;
